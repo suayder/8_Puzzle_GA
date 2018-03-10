@@ -20,6 +20,7 @@ typedef struct individ { //informações do individuo
     void set_fitness_value();
 } individuals;
 extern GameState* test;
+extern int init_man;
 typedef vector<individuals> Tpopulation;
 
 void setFitnessValue_forAll(Tpopulation& population);

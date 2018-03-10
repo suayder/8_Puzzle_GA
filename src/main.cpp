@@ -26,6 +26,7 @@ int main(int argc, char **argv) {
     //fclose(objective_matrix);
 
     test = new GameState;
+    init_man = manhattan(GameState::initial, GameState::objetivo);
     if(isSolvable(GameState::initial)%2 == isSolvable(GameState::objetivo)%2) printf("Matriz Checada! Solução Possível!!!\n");
     else
     {

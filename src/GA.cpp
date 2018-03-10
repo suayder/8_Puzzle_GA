@@ -3,9 +3,11 @@
 
 using namespace std;
 using namespace Game;
-auto f=[](int* x)
+int init_man = 0;
+auto f=[](int* x, int msize)
 {
-    return (manhattan(x, GameState::objetivo));/*usando manhattan como fitness GA*/;
+    
+    return (4*manhattan(x, GameState::objetivo)+msize);/*usando manhattan como fitness GA*/;
 };
 
 
@@ -15,7 +17,7 @@ void individuals::set_probability(int sumOfFitness_value)
 }
 void individuals::set_fitness_value()
 {
-    fitness_value = 4*f(chromossome.tabuleiro) + chromossome.moves.size();
+    fitness_value = f(chromossome.tabuleiro, chromossome.moves.size());
 }
 
 
@@ -101,6 +103,7 @@ individuals selectIndividual(Tpopulation population) { //select to crossover (na
         aux += p.probability_of_selection;
         if(aux>=selectedValue) return p;
     }
+    return population[0];
 
 }
 
@@ -211,6 +214,8 @@ void applyMovements(GameState& gs)
 
 bool sortPopulation(individuals a, individuals b) {
     return (a.fitness_value < b.fitness_value);
+    //return (a.chromossome.moves.size() < b.chromossome.moves.size());
+    //return (manhattan(a.chromossome.tabuleiro,a.chromossome.objetivo) < manhattan(b.chromossome.tabuleiro,a.chromossome.objetivo));
 }
 
 bool sortNatSel(individuals a, individuals b)
@@ -220,7 +225,7 @@ bool sortNatSel(individuals a, individuals b)
 
 void naturalSelection(Tpopulation& population) {
 
-    int sumOfFitness_value = 0;
+    //int sumOfFitness_value = 0;
     setFitnessValue_forAll(population);
 
 
