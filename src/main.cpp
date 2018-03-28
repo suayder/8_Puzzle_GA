@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
 #ifdef DBG
         printf("Passou Cross\n");
 #endif // DBG
-        if(test->moves.size() != 0 && test->moves.size() < 35)
+        if(test->moves.size() != 0 && test->moves.size() < 99999)
         {
             cout << "GameState::objetivo Atingido: " << endl;
             print_state(test->tabuleiro);
