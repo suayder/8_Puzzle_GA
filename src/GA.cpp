@@ -7,7 +7,7 @@ int init_man = 0;
 auto f=[](int* x, int msize)
 {
     
-    return (4*manhattan(x, GameState::objetivo)+msize);/*usando manhattan como fitness GA*/;
+    return (99*manhattan(x, GameState::objetivo)+msize);/*usando manhattan como fitness GA*/;
 };
 
 
@@ -73,13 +73,13 @@ Tpopulation generatePopulation(const int amountOfIndividuals) {
 void mutation(individuals& individ) {
     
     int genesToAdd = rand()%4;
-    if(genesToAdd/2 == 0){
-        for(int i = 0; i < genesToAdd/2; i++)
+    //if(genesToAdd/2 == 0){
+        for(int i = 0; i < genesToAdd; i++)
         {
             individ.chromossome.applyMove((movimentos)(rand()%4));
         }
-    }
-    else
+    //}
+    /*else
     {
         for(int i = 0; i < individ.chromossome.moves.size();i++)
         {
@@ -87,7 +87,7 @@ void mutation(individuals& individ) {
             else individ.chromossome.moves.erase(individ.chromossome.moves.begin()+rand()%individ.chromossome.moves.size());
         }
 
-    }
+    }*/
 }
 //Roulette wheel method using the probability
 individuals selectIndividual(Tpopulation population) { //select to crossover (natural selection)

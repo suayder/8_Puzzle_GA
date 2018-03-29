@@ -137,16 +137,20 @@ int isSolvable(int* block)
 {
 	int i, j, count;
 	count = 0;
+    //print_state(block);
 	for (i = 0; i < 9; i++)
 	{
-		for (j = 0; j < 9; j++)
+        if(block[i] == 8) continue;
+		for (j = i; j < 9; j++)
 		{
+            if(block[j] == 8) continue;
 			if (block[i] > block[j])
 			{
 				count++;
 			}
 		}
 	}
+    //printf("%d\n" , count);
 	return count%2;
 }
 
