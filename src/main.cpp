@@ -7,6 +7,9 @@ int main(int argc, char **argv) {
 
     FILE* initial_matrix;
     FILE* objective_matrix;
+    ofstream outputfile;
+
+  outputfile.open("GA_results_100.dat", std::ios_base::app);
     if(argc == 3) {
         initial_matrix = fopen(argv[1], "r");
         objective_matrix = fopen(argv[2], "r");
@@ -39,6 +42,7 @@ int main(int argc, char **argv) {
     int size_of_population;
     cout<<"Type the population size: ";
     cin >> size_of_population;
+    clock_t t1 = clock();
     population = generatePopulation(size_of_population);
     sort(population.begin(), population.end(), sortPopulation);
     int countInd = 1;
@@ -54,6 +58,7 @@ int main(int argc, char **argv) {
     //cout<<"Type number of generation you want: "<<endl;
     //cin>>generations;applyMove
     //while(numberOfGeneration<generations){
+
     while(true) {
         newPopulation = crossover(population);
 #ifdef DBG
@@ -62,8 +67,12 @@ int main(int argc, char **argv) {
         if(test->moves.size() != 0 && test->moves.size() < 99999)
         {
             cout << "GameState::objetivo Atingido: " << endl;
-            print_state(test->tabuleiro);
+            //print_state(test->tabuleiro);
+            outputfile <<endl<<argv[1] <<"  "<<size_of_population<<"  "<<float( clock () - t1 ) /  CLOCKS_PER_SEC << "  "<<numberOfGeneration << "  "<<test->moves.size();
+            outputfile.close();
+            //cout <<"\nTime: "<< float( clock () - t1 ) /  CLOCKS_PER_SEC<<endl;
             cout << "\nMovimentos: " << test->moves.size() << endl;
+            cout << "\n Number of Generations: " << numberOfGeneration<<endl;
             exit(0);
             test->resetState();
             print_state(test->tabuleiro);

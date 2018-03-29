@@ -1,2 +1,7 @@
 *.o
 *.txt
+!mat1.txt
+!mat2.txt
+!mat3.txt
+!mat4.txt
+!mat5.txt
