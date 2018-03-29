@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 
     test = new GameState;
     init_man = manhattan(GameState::initial, GameState::objetivo);
-    printf("GameState IsSolvable(initial): %d\nGameState isSolvable(objetivo): %d\n", isSolvable(GameState::initial),  isSolvable(GameState::objetivo));
+    //printf("GameState IsSolvable(initial): %d\nGameState isSolvable(objetivo): %d\n", isSolvable(GameState::initial),  isSolvable(GameState::objetivo));
     if(isSolvable(GameState::initial)%2 == isSolvable(GameState::objetivo)%2) printf("Matriz Checada! Solução Possível!!!\n");
     else
     {
